@@ -1,0 +1,3 @@
+package pe.utp.dependencias;
+import java.nio.file.*;
+public class RoundTripTest { public static void main(String[] a)throws Exception { Graph.Builder b=new Graph.Builder();b.addEdge("mod,uno.js","mod\"dos.js");b.addEdge("mod\"dos.js","tercero.js");Graph g=b.build();GraphIO io=new GraphIO();Path p=Path.of("roundtrip.csv");io.exportEdges(g,p);Graph h=io.fromEdgeFile(p);if(g.edgeCount()!=h.edgeCount())throw new AssertionError("edge count");for(int i=0;i<g.size();i++)for(int j:g.neighbors(i)){String x=g.name(i),y=g.name(j);if(h.indexOf(x)<0||h.indexOf(y)<0||!h.neighbors(h.indexOf(x)).contains(h.indexOf(y)))throw new AssertionError(x+" -> "+y);}Files.delete(p);System.out.println("CSV round-trip OK");}}

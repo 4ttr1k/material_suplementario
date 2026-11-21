@@ -1,0 +1,10 @@
+VALIDACIÓN FINAL DE LA APLICACIÓN JAVA
+
+- Se compararon conjuntos completos de nodos y aristas contra los ocho grafos de referencia: coincidencia exacta en los ocho proyectos.
+- Se reemplazó la búsqueda de ciclos O(V(V+E)) por Tarjan O(V+E), ejecutado mediante DFS.
+- Se compara el conjunto de módulos cíclicos obtenido por Tarjan con la diagonal de la clausura de Warshall.
+- Se corrigió la lectura de CSV entrecomillado y se probó el round-trip de aristas con comas y comillas.
+- La aplicación realiza 10 calentamientos y 30 ejecuciones medidas; informa medianas.
+- La memoria n*n es solo el payload teórico de la matriz. BenchmarkRunner mide bytes asignados durante Warshall con ThreadMXBean, no el pico de memoria JVM/RSS.
+
+IMPORTANTE: los tiempos incluidos en el informe de auditoría se obtuvieron en Linux x86_64 con OpenJDK 21 y AMD EPYC 9V74. Para publicar tiempos como resultados del experimento, ejecutar BenchmarkRunner en el equipo experimental y registrar su entorno.
